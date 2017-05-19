@@ -1,0 +1,31 @@
+{
+  "name": "create-rc-comp",
+  "version": "1.0.0",
+  "description": "create cell component in reactjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeSaad/create-rc-comp.git"
+  },
+  "keywords": [
+    "scaffolding",
+    "reactjs"
+  ],
+  "author": "Joe Saad <amplioslabs@gmail.com> (http://joeSaad.net)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joeSaad/create-rc-comp.git/issues"
+  },
+  "homepage": "",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "mkdirp": "^0.5.1",
+    "pretty": "^1.0.0"
+  },
+  "bin": {
+    "create-rc-comp": "./index.js"
+  }
+}
