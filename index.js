@@ -6,8 +6,7 @@ var mkdirp = require('mkdirp'),
   colors = require('colors'),
   pretty = require('pretty');
 
-var jsxContent = `
-import React, { Component } from 'react';
+var jsxContent = `import React, { Component } from 'react';
 
 import './xxxxx.scss';
 
@@ -25,15 +24,44 @@ export default class xxxxx extends Component {
 var scssContent = "";
 
 
-var rl = readline.createInterface({
+function capitalizeFirstLetter(s) {
+  const p = String(s);
+  return p.charAt(0).toUpperCase() + p.slice(1);
+}
+
+const answer = capitalizeFirstLetter(process.argv.slice(2, 3));
+
+const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-rl.question('What is your application name?  ', function(answer) {
-  console.log('Application Name: ' + answer);
 
-  // create directory
+const dirPresent = process.argv.slice(3);
+
+const currentDir = dirPresent == '-d' ? `${answer}/` : '';
+
+const filesToCreate = ['.js', '.scss'];
+const filesContents = [jsxContent, scssContent];
+
+function createFiles() {
+  fs.writeFile(`./${currentDir}${answer}.scss`, filesContents[1], function(err) {
+    if (err) {
+      return console.log(err);
+    } else {
+      console.log(`${answer}.scss saved successfully`.cyan);
+    }
+  });
+  fs.writeFile(`./${currentDir}${answer}.js`, filesContents[0].replace(/xxxxx/g, answer), function(err) {
+    if (err) {
+      return console.log(err);
+    } else {
+      console.log(`${answer}.js saved successfully`.cyan);
+    }
+  });
+}
+
+if (dirPresent == '-d') {
   mkdirp('./' + answer, function(err) {
     if (err) {
       throw err;
@@ -42,26 +70,10 @@ rl.question('What is your application name?  ', function(answer) {
     console.log(`Component ${answer} created successfully!`.green);
   });
 
+  createFiles();
 
-  var filesToCreate = ['.js', '.scss'];
+} else {
+  createFiles();
+}
 
-  var filesContents = [jsxContent, scssContent];
-
-
-  fs.writeFile(`./${answer}/${answer}.scss`, filesContents[1], function(err) {
-    if (err) {
-      return console.log(err);
-    } else {
-      console.log(`${answer}.scss saved successfully`.cyan);
-    }
-  });
-  fs.writeFile(`./${answer}/${answer}.js`, filesContents[0].replace(/xxxxx/g, answer), function(err) {
-    if (err) {
-      return console.log(err);
-    } else {
-      console.log(`${answer}.js saved successfully`.cyan);
-    }
-  });
-
-  rl.close();
-});
+rl.close();
