@@ -1,13 +1,20 @@
-# create-rc-comp
-create react components scaffold 
+# Create React granular components
 
+https://www.npmjs.com/package/create-rc-comp
 
-clone this repo 
-git clone https://github.com/joeSaad/create-rc-comp.git
+Scaffold on the fly your react components as you devrelop faster. 
 
-run npm install
+## Installation 
+```sh
+$ npm install -g create-rc-comp
+```
 
-then run this app using 
-create-rc-comp
-
-this will create cellular react components for quick creation for dumb components
+## Usage
+  Go to directories where you want to create your react components
+```sh
+$ create-rc-comp [ComponentName]
+```
+ If you want to create seperate folder per component with same folder name
+ ```sh
+$ create-rc-comp [ComponentName] -d
+```
