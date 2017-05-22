@@ -1,6 +1,6 @@
 {
   "name": "create-rc-comp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "create cell component in reactjs",
   "main": "index.js",
   "scripts": {
