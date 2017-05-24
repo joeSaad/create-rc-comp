@@ -11,6 +11,9 @@ var jsxContent = `import React, { Component } from 'react';
 import './xxxxx.scss';
 
 export default class xxxxx extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
     return (
       <div>
