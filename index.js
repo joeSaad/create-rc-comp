@@ -43,6 +43,11 @@ function main() {
   }
   const answer = capitalizeFirstLetter(process.argv.slice(2, 3));
 
+  if (answer ==="") {
+    console.log('Please provide the name of the component to create.'.red);
+    return;
+  }
+
   const dirPresent = process.argv.slice(3);
 
   const currentDir = dirPresent == '-d' ? `${answer}/` : '';
